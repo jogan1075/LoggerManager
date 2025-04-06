@@ -11,11 +11,18 @@ let package = Package(
             name: "LoggerManager",
             targets: ["LoggerManager"]),
     ],
+    dependencies: [
+        .package(url: "https://github.com/apple/swift-log.git", from: "1.2.0"),
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "LoggerManager"),
+            name: "LoggerManager",
+            dependencies: [
+                .product(name: "Logging", package: "swift-log"),
+            ]
+        ),
 
     ]
 )
